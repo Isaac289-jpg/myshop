@@ -10,7 +10,8 @@ SECRET_KEY = "django-insecure-j0^!y^l^m^h06r^6pl*d*0op-j*mcm6j06y3u)y!p)9=5bxa@5
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["myshop-1-y53w.onrender.com", "localhost", "127.0.0.1"]
+
 
 
 # Application definition
@@ -100,3 +101,6 @@ CORS_ALLOWED_ORIGINS = [
 
 # Optional: allow all origins during development
 # CORS_ALLOW_ALL_ORIGINS = True
+import os  
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-key-for-local")  
