@@ -1,17 +1,29 @@
+
 """
 Django settings for myshop project.
 """
 
 from pathlib import Path
+import os  
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-j0^!y^l^m^h06r^6pl*d*0op-j*mcm6j06y3u)y!p)9=5bxa@5"
+# Use environment variable for secret key
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-key-for-local")
 
-DEBUG = True
+# Debug is ON locally, OFF in production
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["myshop-1-y53w.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "myshop-1-y53w.onrender.com",  # your Render app
+    "localhost",
+    "127.0.0.1",
+]
 
+# ✅ Add this so Django accepts requests from Render
+CSRF_TRUSTED_ORIGINS = [
+    "https://myshop-1-y53w.onrender.com",
+]
 
 
 # Application definition
@@ -101,6 +113,3 @@ CORS_ALLOWED_ORIGINS = [
 
 # Optional: allow all origins during development
 # CORS_ALLOW_ALL_ORIGINS = True
-import os  
-
-SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-key-for-local")  
