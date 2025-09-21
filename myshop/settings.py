@@ -13,8 +13,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-key-for-local")
 # Debug is ON locally, OFF in production
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
+# ✅ Allow Render subdomains + local development
 ALLOWED_HOSTS = [
-    "myshop-1-y53w.onrender.com",  # Render backend
+    ".onrender.com",   # matches any Render subdomain
     "localhost",
     "127.0.0.1",
 ]
