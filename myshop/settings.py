@@ -1,4 +1,3 @@
-
 """
 Django settings for myshop project.
 """
@@ -15,16 +14,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-key-for-local")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    "myshop-1-y53w.onrender.com",  # your Render app
+    "myshop-1-y53w.onrender.com",  # Render backend
     "localhost",
     "127.0.0.1",
 ]
 
-# ✅ Add this so Django accepts requests from Render
+# ✅ Allow requests from frontend + backend for CSRF
 CSRF_TRUSTED_ORIGINS = [
     "https://myshop-1-y53w.onrender.com",
+    "https://id-preview--bd86b5db-53bd-4025-9968-7d1608ae5fc1.lovable.app",
 ]
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -106,10 +105,10 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# CORS configuration (important for frontend-backend connection)
+# ✅ CORS configuration (important for frontend-backend connection)
 CORS_ALLOWED_ORIGINS = [
-    "https://id-preview--bd86b5db-53bd-4025-9968-7d1608ae5fc1.lovable.app",
+    "https://id-preview--bd86b5db-53bd-4025-9968-7d1608ae5fc1.lovable.app",  # Lovable frontend
 ]
 
-# Optional: allow all origins during development
-# CORS_ALLOW_ALL_ORIGINS = True
+# ✅ Allow credentials (needed for CSRF cookies + auth)
+CORS_ALLOW_CREDENTIALS = True
