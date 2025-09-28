@@ -113,3 +113,10 @@ CORS_ALLOWED_ORIGINS = [
 
 # ✅ Allow credentials (needed for CSRF cookies + auth)
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://id-preview--bd86b5db-53bd-4025-9968-7d1608ae5fc1.lovable.app",
+    "https://*.lovableproject.com",  # allow all lovable subdomains
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
